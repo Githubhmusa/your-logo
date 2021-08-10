@@ -1,7 +1,10 @@
 package codingchallenge.pages;
+//import java.util.ArrayList;
+//import java.util.Collections;
+//import java.util.List;
+//import org.openqa.selenium.By;
 
 import org.junit.Assert;
-//import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -9,14 +12,15 @@ import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.PageFactory;
 
 public class CodingchallengePage {
-   //private WebDriver driver;
-        // WebDriver driver;		
-         WebDriver driver;	
-   	 
+      //private WebDriver driver;
+      // WebDriver driver;		
+       WebDriver driver;	
+  
+       public CodingchallengePage(WebDriver driver) {
+    	     PageFactory.initElements(driver,this);             // home page-------1
+     	} 	  	 
+   	
 	
-   public CodingchallengePage(WebDriver driver) {
-	     PageFactory.initElements(driver,this);             // home page-------1
-	}
 	@FindBy(how = How.XPATH,using = "//*[@class=\"login\"]")//-----------------2
 	private static WebElement signin;
 	
@@ -36,39 +40,39 @@ public class CodingchallengePage {
 	//using = "//*[@class=\"account\"]")//*[@alt="My Store"]//*[@id='history']
      private static WebElement welcomeWord;
 	
-//	@FindBy(how = How.XPATH,using = "//*[@id='my-account']") //-----0
-//    private static WebElement Dresses;
+	 //@FindBy(how = How.XPATH,using="(//*[contains(text(),'Proceed to checkout')])")
+	 //private static WebElement click;
+	
+	// @FindBy(how = How.XPATH,using = "//*[@class='logout']") //-------------13a,13b or 14
+	// private static WebElement signout;
+	
+	
+//	 @FindBy(how = How.XPATH,using = "//*[@id='my-account']") //-----0
+//   private static WebElement Dresses;
 
-	//@FindBy(how = How.XPATH,using = "//*[@for='selectProductSort']") //-----0
-    // private static WebElement sortby;
+//   @FindBy(how = How.XPATH,using = "//*[@for='selectProductSort']") //-----0
+//   private static WebElement sortby;
 	
+//	 @FindBy(how = How.XPATH,using = "//*[@class='product-desc']/following-sibling::div[1]")
+//    private static WebElement sortby;
 	
-//	@FindBy(how = How.XPATH,using = "//*[@class='product-desc']/following-sibling::div[1]")
-//     private static WebElement sortby;
-//	
-	@FindBy(how = How.XPATH,using = " (//*[@itemprop=\"price\"])[2]") 
-	 private static WebElement prize2;
+//   @FindBy(how = How.XPATH,using = " (//*[@itemprop=\"price\"])[2]") 
+//   private static WebElement prize2;
 	
-	@FindBy(how = How.XPATH,using="(//*[contains(text(),'Proceed to checkout')])")
-	private static WebElement click;
+//   @FindBy(how = How.XPATH,using = "//*[@id='total_price']")
+//   private static WebElement prize3;
 	
-	 @FindBy(how = How.XPATH,using = "//*[@id='total_price']")
-	 private static WebElement prize3;
+//	 @FindBy(how = How.XPATH,using="//*[@id='category']")
+//	 private static WebElement checkoutprize4;
 	
-	 @FindBy(how = How.XPATH,using="//*[@id='category']")
-	 private static WebElement checkoutprize4;
-	
-	 @FindBy(how = How.XPATH,using = "//*[@class='logout']") //-------------13a,13b or 14
-	 private static WebElement signoutBtn;
-	
-    //@FindBy(how = How.XPATH,using="//*[@title='Contact Us']")  //-----0 
-	
+//   @FindBy(how = How.XPATH,using="//*[@title='Contact Us']")  //-----0 
+//   private static WebElement title;
 //    @FindBy(how = How.XPATH,using="//*[@for='selectProductSort']")
 //    private static WebElement sortby;//*[@for='selectProductSort']
-	  //"//*[@class='home']") //--------- 0
-      //using = "//*[@id=\"authentication\"]")  //---------0
+	  //    using = "//*[@class='home']") //--------- 0
+      //    using = "//*[@id=\"authentication\"]")  //---------0
       //private static WebElement title;
-     // //*[@title='Dresses']     //*[@alt="My Store"]  //*[@class='logout'] (//*[@itemprop="price"])[2]
+      // //*[@title='Dresses']     //*[@alt="My Store"]  //*[@class='logout'] (//*[@itemprop="price"])[2]
 	
 	
 	
@@ -103,9 +107,9 @@ public class CodingchallengePage {
 	    Assert.assertTrue("Title does not match",actual.contains(expected));//----6
     }
 
-	public void clickOnSortedOrders()  {
-		
-//		//Thread.sleep(3000);
+	public void clickOnSortedOrders()  {		
+
+		//		//Thread.sleep(3000);
 //		List<WebElement> AllPrices = driver.findElements(By.xpath("//*[@class='product-desc']/following-sibling::div[1]")); /*(actualTitle));*/
 //	   
 //	      ArrayList<String> NewList = new ArrayList<String>();
@@ -134,37 +138,39 @@ public class CodingchallengePage {
 //         //Assert.assertTrue("Price does not match", actual.equals(expected));
 //      
 //        driver.findElement(By.xpath("//*[@id='total_price']")).click();
-//		//String actual= driver.getTitle().trim();  
-//		// driver.findElement(By.xpath("//*[@class='logout']")).click();
-		//sortby.click();
-        // checkoutprize4.click();
-       //driver.quit();
+//		 //String actual= driver.getTitle().trim();  
+//		 // driver.findElement(By.xpath("//*[@class='logout']")).click();
+//		// sortby.click();
+//        // checkoutprize4.click();
+          //driver.quit();
+	
+    
 	}
   
 	public void clickHightestFirst() {
-	checkoutprize4.click();
+	//checkoutprize4.click();
 	}
 	
 	public void clickAddToCart() {
-		click.click();
+		//click.click();
      }
 
 	public void clickTotelPriceWithShipping() {
-		prize3.click();
+		//prize3.click();
 	}
 	
 	public void clickSecondDress() {
-		prize2.click();
+		//prize2.click();
 	}  
 	
 	public void SignOut() {
 		//welcomeWord.click();
-     	signoutBtn.click();	 
+     	//signout.click();	 
      	//driver.quit();               // ---------------------------------13a,13b or 14
 	}
 
 	public void CloseBrowser() {
-		driver.close();
+		//driver.close();
 		//driver.quit();	
    }
 }	

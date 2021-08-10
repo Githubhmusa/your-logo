@@ -14,9 +14,12 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
+
+
 import org.junit.Assert;
 
 public class CodingStepDef {
+
 	WebDriver driver;
 	CodingchallengePage codingPage;	
 	
@@ -68,8 +71,7 @@ public class CodingStepDef {
 	public void click_on_sort_by() throws Throwable {
 		
 		Thread.sleep(3000);
-		
-		List<WebElement> AllPrices = driver.findElements(By.xpath("//*[@class='product-desc']/following-sibling::div[1]")); /*(actualTitle));*/
+	List<WebElement> AllPrices = driver.findElements(By.xpath("//*[@class='product-desc']/following-sibling::div[1]")); /*(actualTitle));*/
         ArrayList<String> NewList = new ArrayList<String>();
            
 		    for (int i = 0; i < AllPrices.size(); i++) {
@@ -80,29 +82,28 @@ public class CodingStepDef {
 		Collections.sort(NewList, Collections.reverseOrder());
         System.out.println("List of the prices in sorted order: " + NewList);
 		
-      String SecondPrice = NewList.get(1);
+        String SecondPrice = NewList.get(1);
 		System.out.println("Price of second dress: " + SecondPrice);
+		driver.findElement(By.xpath("(//*[contains(text(),'" + SecondPrice + "')])[2]")).click();
+	   
+	     Thread.sleep(3000);
+	     driver.findElement(By.xpath("(//*[contains(text(),'Proceed to checkout')])")).click();
+        // driver.findElement(By.xpath("(//*[@id='category'])")).click();
 		
-		driver.findElement(By.xpath("(//*[contains(text(),'" + SecondPrice + "')])[2] ")).click();
-	//	Thread.sleep(3000);
-	//driver.findElement(By.xpath("(//*[contains(text(),'Proceed to checkout')])")).click();
-
-	//driver.findElement(By.xpath("(//*[@id='category'])")).click();
+		 Double expected = Double.parseDouble(SecondPrice.replace("$", "")) + 2;
+		 System.out.println("The Expected price is: " + expected);
 		
-		
-		Double expected = Double.parseDouble(SecondPrice.replace("$", "")) + 2;
-		System.out.println("The Expected price is: " + expected);
-		
-//		Thread.sleep(2000);
-//	     Double actual = Double.parseDouble(driver.findElement(By.xpath("//*[@id='total_price']")).getText().replace("$", ""));
-//	     Assert.assertTrue("Price does not match", actual.equals(expected));
+		Thread.sleep(2000);
+	    Double actual = Double.parseDouble(driver.findElement(By.xpath("//*[@id='total_price']")).getText().replace("$", ""));
+	    Assert.assertTrue("Price does not match", actual.equals(expected));
 		
 	    
-	    Thread.sleep(2000);
-	    driver.findElement(By.xpath("//*[@class='logout']")).click();
-	    // driver.quit();
-         codingPage.clickOnSortedOrders();
-          driver.quit();
+	      Thread.sleep(2000);
+		 driver.findElement(By.xpath("//*[@class='logout']")).click();
+	     // driver.quit();
+	   
+	    codingPage.clickOnSortedOrders();
+         driver.quit();
 		
 	}
 
@@ -129,14 +130,14 @@ public class CodingStepDef {
 
 	@Then("^user sign out$")
 	public void user_sign_out() throws Throwable {
-	driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+   //driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
      codingPage.SignOut();                      //---------------------------13a
 	   
 	}
 
 	@Then("^user close the browser$")
 	public void user_close_the_browser() throws Throwable {
-		driver.close();                        //----------------------------13b or 14 
+		//driver.close();                        //----------------------------13b or 14 
 	    //driver.quit();   
 		codingPage.CloseBrowser();
 	

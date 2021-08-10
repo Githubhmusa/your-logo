@@ -1,14 +1,14 @@
 package com.runnercodingchallenge;
-
-import org.junit.AfterClass;
 import org.junit.runner.RunWith;
-
 import com.cucumber.listener.Reporter;
-
+import org.junit.AfterClass;
 import cucumber.api.CucumberOptions;
 import cucumber.api.junit.Cucumber;
 
+
+
 @RunWith(Cucumber.class)
+
 @CucumberOptions(
 	features = "src/test/resources",	
 	glue = {"codingchallenge.steps"},
@@ -16,8 +16,8 @@ import cucumber.api.junit.Cucumber;
 	plugin = {"com.cucumber.listener.ExtentCucumberFormatter:target/cucumber-reports/report.html"},
 	monochrome = true	
 		)	
-
 public class RunnerCodingChallenge {
+
 	@AfterClass
 	
 	
